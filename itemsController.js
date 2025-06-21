@@ -5,7 +5,7 @@ export const readItem = (req, res) => res.json(items);
 
 //  item controller for readItemById
 export const readItemById = (req, res) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     const item = items.find(i => i.id === id);
     if (!item) {
         return res.status(404).json({ message: "Item not found" });
@@ -16,7 +16,7 @@ export const readItemById = (req, res) => {
 //  item controller for createItem
 export const createItem = (req, res) => {
     const data = req.body;
-    if (!data || !data.name || !data.description || typeof data.price !== "number") {
+    if (!data || !data.name || !data.description) {
         return res.status(400).json({ message: "Invalid item data" });
     }
     const newItem = {
@@ -30,9 +30,9 @@ export const createItem = (req, res) => {
 
 //  item controller for updateItem
 export const updateItem = (req, res) => {
-      const id = Number(req.params.id);
+      const id = req.params.id;
       const data = req.body;
-      if(!data || !data.name || !data.description || typeof data.price !== 'number'){
+      if(!data || !data.name || !data.description){
         return res.status(400).json({message: "invalid item data supplied"});
       };
       const itemIndex = items.findIndex(i => i.id == id);
@@ -46,7 +46,7 @@ export const updateItem = (req, res) => {
 
 //  item controller for deleteItem
 export const deleteItem = (req, res) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     const index = items.findIndex(i => i.id === id);
     if (index === -1) {
         return res.status(404).json({ message: "Item not found" });
