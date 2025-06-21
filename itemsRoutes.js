@@ -1,6 +1,6 @@
 // import express from "express";
 import { Router } from "express";
-import { readItem, readItemById, createItem, updateItem, deleteItem } from "../controllers/itemsController.js";
+import { readItem, readItemById, createItem, updateItem, deleteItem } from "./itemsController.js";
 
 const router = Router();
 
