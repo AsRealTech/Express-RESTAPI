@@ -1,4 +1,4 @@
-import { items } from "../data/items.js";
+import { items } from "./items.js";
 
 //  item controller for readItem
 export const readItem = (req, res) => res.json(items);
